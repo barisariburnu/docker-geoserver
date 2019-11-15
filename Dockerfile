@@ -77,6 +77,11 @@ ADD resources/controlflow.properties ${GEOSERVER_DATA_DIR}
 ADD resources/*.jar ${GEOSERVER_PLUG_DIR}/
 ADD scripts/*.sh /usr/local/bin/
 
+RUN chmod -R 755 \ 
+    /usr/local/bin/entrypoint.sh \
+    /usr/local/bin/setup.sh \
+    /usr/local/bin/update_password.sh 
+
 RUN setup.sh
 
 ENTRYPOINT [ "entrypoint.sh" ]

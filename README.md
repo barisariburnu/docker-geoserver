@@ -37,7 +37,7 @@ Edit the build script to change the following variables:
 ```shell
 git clone git://github.com/barisariburnu/docker-geoserver
 cd docker-geoserver
-./build.sh
+./scripts/build.sh
 ```
 
 Ensure that you look at the build script to see what other build arguments you can include whilst building your image.
