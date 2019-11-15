@@ -40,8 +40,6 @@ RUN mkdir -p ${GEOSERVER_DIR} \
 
 WORKDIR ${GEOSERVER_DIR}
 
-ADD resources/geoserver-2.16.0-war.zip .
-
 RUN wget --progress=bar:force:noscroll -c --no-check-certificate http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/geoserver-${GEOSERVER_VERSION}-war.zip \
 	&& unzip geoserver-${GEOSERVER_VERSION}-war.zip \
 	&& unzip geoserver.war \
