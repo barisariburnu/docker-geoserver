@@ -1,5 +1,5 @@
 # docker-geoserver
-This will build a docker image that runs geoserver.
+This will build a docker image based on tomcat that runs geoserver.
 
 ## Features
 
