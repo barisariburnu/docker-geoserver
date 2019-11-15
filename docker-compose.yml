@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+   geoserver:
+      image: barisariburnu/docker-geoserver
+      volumes:
+        - type: data
+          source: ./data
+          target: /var/local/geoserver/data
+      ports:
+        - "8080:8080"
+      environment:
+        - GEOSERVER_VERSION=2.16.0
+        - GEOSERVER_DIR=/usr/local/geoserver
+        - GEOSERVER_DATA_DIR=/var/local/geoserver/data
+        - GEOSERVER_PLUG_DIR=/var/local/geoserver/extensions
+        - INITIAL_MEMORY=768M
+        - MAXIMUM_MEMORY=1560M
+        - GEOSERVER_ADMIN_USER=admin
+        - GEOSERVER_ADMIN_PASSWORD=geoserver
+        - COMMUNITY_MODULES=true
+      restart: on-failure
+      healthcheck:
+        test: curl --fail -s http://localhost:8080/ || exit 1
+        interval: 1m30s
+        timeout: 10s
+        retries: 3
