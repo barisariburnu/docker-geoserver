@@ -63,15 +63,12 @@ done
 
 # Install libjpeg-turbo for that specific geoserver {GEOSERVER_VERSION}
 
-filename="libjpeg-turbo-official_2.0.3_amd64.deb"
-
-if [[ ! -f "/tmp/resources/lib/${filename}" ]]; 
+if [[ ! -f "/tmp/resources/lib/libjpeg-turbo-official_2.0.3_amd64.deb" ]]; 
 then
-    url="https://sourceforge.net/projects/libjpeg-turbo/files/2.0.3/${filename}/download"
-    download_url ${url} "/tmp/resources/lib/${filename}"
+    url="https://sourceforge.net/projects/libjpeg-turbo/files/2.0.3/libjpeg-turbo-official_2.0.3_amd64.deb/download"
+    download_url ${url} "/tmp/resources/lib/libjpeg-turbo-official_2.0.3_amd64.deb"
+    dpkg -i "/tmp/resources/lib/libjpeg-turbo-official_2.0.3_amd64.deb"
 fi;
-
-dpkg -i "/tmp/resources/lib/${filename}"
 
 # The Geospatial Data Abstraction Library is a computer software library 
 # for reading and writing raster and vector geospatial data formats
