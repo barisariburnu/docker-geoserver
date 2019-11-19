@@ -12,8 +12,4 @@ if [ -n "${CUSTOM_GID}" ];then
   find / -group 1099 -exec chgrp -h tomcat {} \;
 fi
 
-#We need this line to ensure that data has the correct rights
-chown -R tomcat:tomcat ${GEOSERVER_DATA_DIR} 
-chown -R tomcat:tomcat ${GEOSERVER_PLUG_DIR}
-
 su tomcat -c "/usr/local/tomcat/bin/catalina.sh run"
