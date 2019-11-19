@@ -13,7 +13,6 @@ services:
         - GEOSERVER_VERSION=2.16.0
         - GEOSERVER_DIR=/usr/local/geoserver
         - GEOSERVER_DATA_DIR=/var/local/geoserver/data
-        - GEOSERVER_PLUG_DIR=/var/local/geoserver/extensions
         - INITIAL_MEMORY=768M
         - MAXIMUM_MEMORY=1560M
       restart: on-failure

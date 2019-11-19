@@ -83,7 +83,6 @@ You can also use the following environment variables to pass arguments to GeoSer
 * `GEOSERVER_VERSION=<geoserver version>`
 * `GEOSERVER_DIR=<PATH>`
 * `GEOSERVER_DATA_DIR=<PATH>`
-* `GEOSERVER_PLUG_DIR=<PATH>`
 * Tomcat properties:
 
   * You can change the variables based on [geoserver container considerations](http://docs.geoserver.org/stable/en/user/production/container.html)  These arguments operate on the `-Xms` and `-Xmx` options of the Java Virtual Machine

@@ -9,7 +9,6 @@ LABEL maintainer="Barış Arıburnu <barisariburnu@gmail.com>"
 ENV GEOSERVER_VERSION 2.16.0
 ENV GEOSERVER_DIR /usr/local/geoserver
 ENV GEOSERVER_DATA_DIR /var/local/geoserver/data
-ENV GEOSERVER_PLUG_DIR /var/local/geoserver/extensions
 ENV INITIAL_MEMORY 768M
 ENV MAXIMUM_MEMORY 1560M
 
@@ -31,8 +30,7 @@ RUN set -x \
 
 # Create folders
 RUN mkdir -p ${GEOSERVER_DIR} \
-    && mkdir -p ${GEOSERVER_DATA_DIR} \
-    && mkdir -p  ${GEOSERVER_PLUG_DIR}
+    && mkdir -p ${GEOSERVER_DATA_DIR}
 
 WORKDIR ${GEOSERVER_DIR}
 
@@ -69,9 +67,11 @@ RUN addgroup --gid 1099 tomcat && useradd -m -u 1099 -g tomcat tomcat \
 
 # Add configurations
 ADD resources/geoserver.xml ${CATALINA_HOME}/conf/Catalina/localhost/geoserver.xml
-ADD resources/controlflow.properties ${GEOSERVER_DATA_DIR}
-ADD resources/*.jar ${GEOSERVER_PLUG_DIR}/
 ADD scripts/*.sh /usr/local/bin/
+
+COPY resources/controlflow.properties ${GEOSERVER_DATA_DIR}
+COPY resources/ojdbc8.jar ${GEOSERVER_DIR}/WEB-INF/lib/ojdbc8.jar
+COPY resources/sqljdbc4-4.0.jar ${GEOSERVER_DIR}/WEB-INF/lib/sqljdbc4-4.0.jar
 
 RUN chmod -R 755 \ 
     /usr/local/bin/entrypoint.sh \
