@@ -16,8 +16,6 @@ services:
         - GEOSERVER_PLUG_DIR=/var/local/geoserver/extensions
         - INITIAL_MEMORY=768M
         - MAXIMUM_MEMORY=1560M
-        - GEOSERVER_ADMIN_USER=admin
-        - GEOSERVER_ADMIN_PASSWORD=geoserver
         - COMMUNITY_MODULES=true
       restart: on-failure
       healthcheck:

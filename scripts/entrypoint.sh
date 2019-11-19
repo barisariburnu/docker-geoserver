@@ -16,5 +16,4 @@ fi
 chown -R tomcat:tomcat ${GEOSERVER_DATA_DIR} 
 chown -R tomcat:tomcat ${GEOSERVER_PLUG_DIR}
 
-su tomcat -c "update_password.sh"
 su tomcat -c "/usr/local/tomcat/bin/catalina.sh run"

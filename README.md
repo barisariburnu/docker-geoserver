@@ -84,23 +84,11 @@ You can also use the following environment variables to pass arguments to GeoSer
 * `GEOSERVER_DIR=<PATH>`
 * `GEOSERVER_DATA_DIR=<PATH>`
 * `GEOSERVER_PLUG_DIR=<PATH>`
-* `GEOSERVER_ADMIN_USER=<username>`
-* `GEOSERVER_ADMIN_PASSWORD=<password>`
 * Tomcat properties:
 
   * You can change the variables based on [geoserver container considerations](http://docs.geoserver.org/stable/en/user/production/container.html)  These arguments operate on the `-Xms` and `-Xmx` options of the Java Virtual Machine
   * `INITIAL_MEMORY=<size>` : Initial Memory that Java can allocate, default `2G`
   * `MAXIMUM_MEMORY=<size>` : Maximum Memory that Java can allocate, default `4G`
-
-**Note:**
-
-### Changing GeoServer password on runtime
-
-The default GeoServer user is 'admin' and the password is 'geoserver'. You can pass the environment variable GEOSERVER_ADMIN_PASSWORD to change it on runtime.
-
-```shell
-docker run --name "geoserver"  -e GEOSERVER_ADMIN_PASSWORD=awesomegeoserver -p 8080:8080 -d -t barisariburnu/docker-geoserver
-```
 
 ## Storing data on the host rather than the container.
 

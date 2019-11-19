@@ -79,8 +79,7 @@ ADD scripts/*.sh /usr/local/bin/
 
 RUN chmod -R 755 \ 
     /usr/local/bin/entrypoint.sh \
-    /usr/local/bin/setup.sh \
-    /usr/local/bin/update_password.sh 
+    /usr/local/bin/setup.sh
 
 RUN setup.sh
 
