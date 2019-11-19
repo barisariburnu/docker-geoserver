@@ -72,7 +72,7 @@ docker run -d -p 8080:8080 -v ${PWD}/exts_dir:/var/local/geoserver/extensions ba
 
 ### Building with plugins
 
-Inspect setup.sh to confirm which plugins (community modules or standard plugins) you want to include in the build process, then add them in their respective sections in the script.
+Inspect setup.sh to confirm which plugins you want to include in the build process, then add them in their respective sections in the script.
 
 You should ensure that the plugins match the version for the GeoServer WAR zip file.
 

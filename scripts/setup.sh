@@ -59,25 +59,6 @@ do
     download_url ${url} "/tmp/resources/extensions/${i}"
 done
 
-# Build geogig and other community modules
-
-if  [[ "${COMMUNITY_MODULES}" == true ]]; then
-    array=( \
-        geoserver-${GEOSERVER_VERSION:0:4}-SNAPSHOT-mbtiles-plugin.zip \
-        geoserver-${GEOSERVER_VERSION:0:4}-SNAPSHOT-mbstyle-plugin.zip \
-        geoserver-${GEOSERVER_VERSION:0:4}-SNAPSHOT-s3-geotiff-plugin.zip \
-        geoserver-${GEOSERVER_VERSION:0:4}-SNAPSHOT-gwc-s3-plugin.zip \
-    )
-    
-    for i in "${array[@]}"
-    do
-        download_url "https://build.geoserver.org/geoserver/${GEOSERVER_VERSION:0:5}x/community-latest/${i}" "/tmp/resources/extensions/${i}"
-    done
-
-else
-    echo "Building community modules will be disabled"
-fi;
-
 ##############################//##############################
 
 # Install libjpeg-turbo for that specific geoserver {GEOSERVER_VERSION}

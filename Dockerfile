@@ -12,19 +12,15 @@ ENV GEOSERVER_DATA_DIR /var/local/geoserver/data
 ENV GEOSERVER_PLUG_DIR /var/local/geoserver/extensions
 ENV INITIAL_MEMORY 768M
 ENV MAXIMUM_MEMORY 1560M
-ENV COMMUNITY_MODULES true
 
 # Tomcat environment
-ENV CATALINA_OPTS "-server -Djava.awt.headless=true \
-    -Xrs -XX:PerfDataSamplingInterval=500 \
+ENV CATALINA_OPTS "-server -Djava.awt.headless=true -DGEOSERVER_DATA_DIR=${GEOSERVER_DATA_DIR} \
+    -Xrs -XX:PerfDataSamplingInterval=500 -Xms${INITIAL_MEMORY} -Xmx${MAXIMUM_MEMORY} -XX:NewSize=48m \
     -Dorg.geotools.referencing.forceXY=true -XX:SoftRefLRUPolicyMSPerMB=36000 -XX:+UseParallelGC -XX:NewRatio=2 \
     -XX:+CMSClassUnloadingEnabled -Dfile.encoding=UTF8 -Duser.timezone=GMT -Djavax.servlet.request.encoding=UTF-8 \
     -Djavax.servlet.response.encoding=UTF-8 -Duser.timezone=GMT -Dorg.geotools.shapefile.datetime=true \
-    -Dorg.geotools.shapefile.datetime=true -Ds3.properties.location=${GEOSERVER_DATA_DIR}/s3.properties \
-    -Xbootclasspath/a:${GEOSERVER_DIR}/WEB-INF/lib/marlin.jar \
-    -Dsun.java2d.renderer=org.marlin.pisces.PiscesRenderingEngine \
-	-Xms${INITIAL_MEMORY} -Xmx${MAXIMUM_MEMORY} -XX:NewSize=48m \
-    -Doracle.jdbc.timezoneAsRegion=false -DGEOSERVER_DATA_DIR=${GEOSERVER_DATA_DIR}"
+    -Dorg.geotools.shapefile.datetime=true -Xbootclasspath/a:${GEOSERVER_DIR}/WEB-INF/lib/marlin.jar \
+    -Dsun.java2d.renderer=org.marlin.pisces.PiscesRenderingEngine -Doracle.jdbc.timezoneAsRegion=false"
 
 # Microsoft fonts
 RUN echo "deb http://httpredir.debian.org/debian stretch contrib" >> /etc/apt/sources.list
